@@ -40,6 +40,8 @@ resource "aws_acm_certificate" "this" {
   lifecycle {
     create_before_destroy = true
   }
+
+  provider = aws.acm
 }
 
 resource "aws_route53_record" "validation" {
@@ -57,6 +59,8 @@ resource "aws_route53_record" "validation" {
   allow_overwrite = var.validation_allow_overwrite_records
 
   depends_on = [aws_acm_certificate.this]
+
+  provider = aws.dns
 }
 
 resource "aws_acm_certificate_validation" "this" {
@@ -65,4 +69,6 @@ resource "aws_acm_certificate_validation" "this" {
   certificate_arn = aws_acm_certificate.this[0].arn
 
   validation_record_fqdns = flatten([aws_route53_record.validation.*.fqdn, var.validation_record_fqdns])
+
+  provider = aws.acm
 }

@@ -24,6 +24,11 @@ module "acm" {
   tags = {
     Name = "my-domain.com"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
 }
 ```
 
@@ -49,6 +54,12 @@ module "acm" {
   tags = {
     Name = "weekly.tf"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws #not used but definition required
+  }
+  
 }
 
 ```
@@ -77,6 +88,12 @@ module "acm" {
   tags = {
     Name = "my-domain.com"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
+  
 }
 
 ```
@@ -129,7 +146,8 @@ module "acm" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.12.0 |
+| <a name="provider_aws.acm"></a> [aws.acm](#provider\_aws.acm) | >= 4.12.0 |
+| <a name="provider_aws.dns"></a> [aws.dns](#provider\_aws.dns) | >= 4.12.0 |
 
 ## Modules
 

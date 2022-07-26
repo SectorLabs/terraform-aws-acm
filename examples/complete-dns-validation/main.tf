@@ -38,4 +38,9 @@ module "acm" {
   tags = {
     Name = local.domain_name
   }
+
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
 }

@@ -17,4 +17,10 @@ module "acm" {
   tags = {
     Name = var.domain_name
   }
+
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
+
 }
