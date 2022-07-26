@@ -1,10 +1,11 @@
 terraform {
-  required_version = ">= 0.13.1"
+  required_version = ">= 1.0"
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = ">= 2.53"
+      source                = "hashicorp/aws"
+      version               = ">= 3.75.0"
+      configuration_aliases = [aws.acm, aws.dns]
     }
   }
 }

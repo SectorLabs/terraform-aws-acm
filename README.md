@@ -24,6 +24,11 @@ module "acm" {
   tags = {
     Name = "my-domain.com"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
 }
 ```
 
@@ -49,6 +54,12 @@ module "acm" {
   tags = {
     Name = "weekly.tf"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws #not used but definition required
+  }
+  
 }
 
 ```
@@ -77,6 +88,12 @@ module "acm" {
   tags = {
     Name = "my-domain.com"
   }
+  
+  providers = {
+    aws.acm = aws
+    aws.dns = aws
+  }
+  
 }
 
 ```
@@ -86,6 +103,7 @@ module "acm" {
 - [Complete example with DNS validation (recommended)](https://github.com/terraform-aws-modules/terraform-aws-acm/tree/master/examples/complete-dns-validation)
 - [Complete example with DNS validation via external DNS provider (CloudFlare)](https://github.com/terraform-aws-modules/terraform-aws-acm/tree/master/examples/complete-dns-validation-with-cloudflare)
 - [Complete example with EMAIL validation](https://github.com/terraform-aws-modules/terraform-aws-acm/tree/master/examples/complete-email-validation)
+- [Complete example with EMAIL validation and validation domain override](https://github.com/terraform-aws-modules/terraform-aws-acm/tree/master/examples/complete-email-validation-with-validation-domain)
 
 ## Conditional creation and validation
 
@@ -121,14 +139,15 @@ module "acm" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.53 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.75.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.53 |
+| <a name="provider_aws.acm"></a> [aws.acm](#provider\_aws.acm) | >= 3.75.0 |
+| <a name="provider_aws.dns"></a> [aws.dns](#provider\_aws.dns) | >= 3.75.0 |
 
 ## Modules
 
